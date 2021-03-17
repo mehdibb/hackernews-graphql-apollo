@@ -4,13 +4,14 @@ import './styles/index.css';
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 
-
 import {
   ApolloClient,
   ApolloProvider,
   createHttpLink,
   InMemoryCache,
 } from '@apollo/client';
+import {BrowserRouter} from 'react-router-dom';
+
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:4000',
@@ -22,7 +23,11 @@ const client = new ApolloClient({
 })
 
 ReactDOM.render(
-    <ApolloProvider client={client}><App /></ApolloProvider>,
+    <BrowserRouter>
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
+    </BrowserRouter>,
   document.getElementById('root')
 );
 
